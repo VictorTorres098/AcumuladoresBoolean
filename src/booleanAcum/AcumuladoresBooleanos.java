@@ -125,5 +125,36 @@ public class AcumuladoresBooleanos {
 		}
 		return acum;
 	}
+	public static boolean tieneFilIgualCol(int[][] mat, int col) {
+		if(mat.length <=0 || mat.length <= col) {
+			return false;
+		}
+		boolean exiteCoicidencia = true;
+		for(int i = 0; i < mat.length; i++) {
+			exiteCoicidencia = exiteCoicidencia && mat[i][col] == mat[col][i];
+		}
+		return exiteCoicidencia;
+	}
+//	Implementar la función tieneFilIgualaCol utilizando acumuladores booleanos,
+//	que recibe una matriz mat y un número de columna, col,  y devuelve verdadero si existe alguna fila que sea igual, 
+//	elemento a elemento, a la columna cuyo índice es col. La matriz tiene igual cantidad de filas que de columnas. 
+//	Si la matriz está vacía, en este caso devuelve False y col debe ser un valor válido sino devuelve False
+	public static boolean tieneFillgualCol(int [][] mat, int col) {
+//		if(mat.length == 0 || mat.length <= col) {
+//			return false;
+//		}
+		boolean existeIgual = false;
+		for(int c = 0; c < mat.length; c++) {
+			existeIgual = existeIgual || existeEnCol(c, mat, col);
+		}
+		return existeIgual;
+	}
+	public static boolean existeEnCol(int c, int[][] mat, int col) {
+		boolean iguales = true;
+		for(int i = 0;i < mat.length ; i++) {
+			iguales = iguales && mat[i][col] == mat[c][i]; //fila //col
+		}
+		return iguales;
+	}
 	
 }
