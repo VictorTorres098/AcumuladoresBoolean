@@ -7,7 +7,7 @@ public class AcumuladoresBooleanos {
 	Subir los archivos .java a la tarea de moodle
 	*/
 	// devuelve verdadero si todos los elementos de mat son pares
-	static public boolean todosPares(int[][] mat) {
+	public boolean todosPares(int[][] mat) {
 		boolean pares = true;
 		for(int i = 0; i < mat.length ; i++) {
 			for(int j = 0 ; j < mat[i].length ; j++) {
@@ -17,14 +17,14 @@ public class AcumuladoresBooleanos {
 		return pares;
 	}
 	//devuelve verdadero si todos los elementos de alguna fila de mat son pares
-	static public boolean algunaFilaPar(int[][] mat) {
+	public boolean algunaFilaPar(int[][] mat) {
 		boolean algunaFilaPar = false;
 		for(int i = 0; i < mat.length ; i++) {
 			algunaFilaPar = algunaFilaPar || recorrerFila(i, mat);
 		}	
 		return algunaFilaPar;
 	}
-	static public boolean recorrerFila (int n, int [][] mat) {
+	public boolean recorrerFila (int n, int [][] mat) {
 		boolean filaPar = true;
 		for(int i = 0; i < mat[n].length ; i++) {
 			filaPar = filaPar && mat[n][i]%2==0;
@@ -32,14 +32,14 @@ public class AcumuladoresBooleanos {
 		return filaPar;
 	}
 	//devuelve verdadero si alguna fila de mat suma menos que 30
-	static public boolean algunaFilaSumaMenosQue30(int[][] mat) {
+	public boolean algunaFilaSumaMenosQue30(int[][] mat) {
 		boolean algunaFila = false;
 		for(int i = 0; i < mat.length ; i++) {
 			algunaFila = algunaFila || sumarFila(i,mat);
 		}
 		return algunaFila;
 	}
-	static public boolean sumarFila (int n, int [][] mat) {
+	public boolean sumarFila (int n, int [][] mat) {
 		boolean masDe30 = true;
 		int cont = 0;
 		for(int i = 0; i < mat[n].length ; i++) {
@@ -48,14 +48,14 @@ public class AcumuladoresBooleanos {
 		return masDe30 = masDe30 && cont<=30; 
 	}
 	//devuelve verdadero si alguna columna de mat suma mas que 50
-	static public boolean algunaColSumaMasQue50(int[][] mat) {	
+	public boolean algunaColSumaMasQue50(int[][] mat) {	
 		boolean algunaCol = false;
 		for(int j = 0; j<mat[0].length ; j++) {
 			algunaCol = algunaCol || sumarCol(j,mat);
 		}
 		return algunaCol;
 	}
-	static public boolean sumarCol(int n, int [][] mat) {
+	public boolean sumarCol(int n, int [][] mat) {
 		boolean masDe50 = true;
 		int contCol = 0;
 		for(int i = 0; i < mat.length ; i++) {
@@ -64,7 +64,7 @@ public class AcumuladoresBooleanos {
 		return masDe50 = masDe50 && contCol>=50;
 	}
 	//devuelve verdadero si alguna fila es par y alguna columna suma mas que 50
-	static public boolean algunaFilaParYColMasQue50(int[][] mat) {	
+	public boolean algunaFilaParYColMasQue50(int[][] mat) {	
 		boolean algunaFila = false;
 		boolean algunaCol = false;
 		boolean cumpleCondiciones = true;
@@ -75,7 +75,7 @@ public class AcumuladoresBooleanos {
 	// devuelve verdadero si alguna fila de mat es igual a lista.
 	// Lista tiene tantos elementos como las columnas de mat
 	
-	public static void imprimirPorFilas(int [] [] m) {
+	public void imprimirPorFilas(int [] [] m) {
 		for(int fila = 0; fila< m.length; fila++ ) {
 			for(int col = 0; col<m[fila].length; col++) {
 				System.out.print(" " + m[fila] [col]);
@@ -84,26 +84,26 @@ public class AcumuladoresBooleanos {
 		}
 	}
 	
-	public static void imprimirLista(int[] l) {
+	public void imprimirLista(int[] l) {
 		for(int i = 0; i < l.length; i++) {
 			System.out.println(" "+l[i]);
 		}
 	}
-	public static boolean exiteColumnaMultiplo(int [][] mat, int k, int c) {
+	public boolean exiteColumnaMultiplo(int [][] mat, int k, int c) {
 		boolean exiteCoicidencia = false;
 		for(int col=0; col < mat[0].length ; col++) {
 			exiteCoicidencia = exiteCoicidencia || sumarCol(mat, col) == sumarCol(mat, c)*k; 
 		}
 		return exiteCoicidencia;
 	}
-	public static int sumarCol(int [][] mat, int col) {
+	public int sumarCol(int [][] mat, int col) {
 		int acum = 0;
 		for (int fila=0; fila < mat.length; fila++) {
 			acum = acum + mat[fila][col];
 		}
 		return acum;
 	}
-	public static boolean tieneFilIgualCol(int[][] mat, int col) {
+	public boolean tieneFilIgualCol(int[][] mat, int col) {
 		if(mat.length <=0 || mat.length <= col) {
 			return false;
 		}
@@ -117,24 +117,22 @@ public class AcumuladoresBooleanos {
 //	que recibe una matriz mat y un número de columna, col,  y devuelve verdadero si existe alguna fila que sea igual, 
 //	elemento a elemento, a la columna cuyo índice es col. La matriz tiene igual cantidad de filas que de columnas. 
 //	Si la matriz está vacía, en este caso devuelve False y col debe ser un valor válido sino devuelve False
-	public static boolean tieneFillgualCol(int [][] mat, int col) {
-//		if(mat.length == 0 || mat.length <= col) {
-//			return false;
-//		}
+	public boolean tieneFillgualCol(int [][] mat, int col) {
+
 		boolean existeIgual = false;
 		for(int c = 0; c < mat.length; c++) {
 			existeIgual = existeIgual || existeEnCol(c, mat, col);
 		}
 		return existeIgual;
 	}
-	public static boolean existeEnCol(int c, int[][] mat, int col) {
+	public boolean existeEnCol(int c, int[][] mat, int col) {
 		boolean iguales = true;
 		for(int i = 0;i < mat.length ; i++) {
-			iguales = iguales && mat[i][col] == mat[c][i]; //fila //col
+			iguales = iguales && mat[i][col] == mat[c][i];
 		}
 		return iguales;
 	}
-	public static void imprimirPorColumnas(int [] [] m) {
+	public void imprimirPorColumnas(int [] [] m) {
 		for(int col=0; col < m[0].length; col++ ) {
 			for(int fila=0; fila< m.length; fila++) {
 				System.out.print(" "+m[fila] [col]);
@@ -142,7 +140,7 @@ public class AcumuladoresBooleanos {
 			System.out.println();
 		}
 	}
-	public static boolean algunnaColContieneArr(int[][] arr, int[] arreglo) {
+	public boolean algunnaColContieneArr(int[][] arr, int[] arreglo) {
 		if(arr.length == 0 || arreglo.length == 0) {
 			return false;
 		}
@@ -157,7 +155,7 @@ public class AcumuladoresBooleanos {
 		}
 		return algunaColumnaCumple;
 	}
-	public static boolean EstaEnLista(int[] arreglo, int valorArr) {
+	public boolean EstaEnLista(int[] arreglo, int valorArr) {
 		boolean ret = true;
 		for(int i = 0; i < arreglo.length; i++) {
 			ret = ret && arreglo[i]==valorArr;
@@ -166,14 +164,14 @@ public class AcumuladoresBooleanos {
 	}
 	
 	
-	static public boolean algunaFilaIgualLista(int[][] mat, int[] lista) {
+	public boolean algunaFilaIgualLista(int[][] mat, int[] lista) {
 		boolean algunaFila = false;
 		for(int i = 0; i < mat.length ; i++) {
 			algunaFila = algunaFila || compararLista(i, mat);
 		}
 		return algunaFila;
 	}
-	static public boolean compararLista(int n, int [][] mat) {
+	public boolean compararLista(int n, int [][] mat) {
 		boolean coicidencia = true;
 		for(int i = 0; i < mat[0].length ; i++ ) {
 			for(int j = 0; j < mat.length ; j++) {
@@ -188,6 +186,11 @@ public class AcumuladoresBooleanos {
 	public boolean hayInterseccionPorFila(int[][] mat1, int [][] mat2) {
 		boolean existeInterFila = false;
 		boolean InterEnTodasFilas = true;
+		
+		if(mat1.length != mat2.length) {
+			return false;
+		}
+		
 		for(int fila = 0; fila < mat1.length; fila ++) { 
 			for(int col = 0; col < mat1[fila].length; col++) {
 				existeInterFila = existeInterFila || buscarElemento(mat2, fila, mat1[fila][col]);	
@@ -199,10 +202,8 @@ public class AcumuladoresBooleanos {
 	}
 	public boolean buscarElemento(int [][] mat2, int fila, int elemento) {
 		boolean exiteElemento = false;
-		int elementomat2;
 		for(int col = 0; col < mat2[0].length; col++) {
 			exiteElemento = exiteElemento || mat2[fila][col] == elemento;
-			elementomat2 = mat2[fila][col];
 		}
 		return exiteElemento;
 	}
@@ -210,11 +211,14 @@ public class AcumuladoresBooleanos {
 //	Que dado una matriz y la posición de una fila, se verifica si existe alguna columna cuya suma de todos
 //	sus elementos sea mayor que la suma de todos los elementos de la fila indicada por parámetro.
 //	Si la posición de la fila es inválida o la matriz está vacía, devuelve falso. (Ejercicio 3)
-	
-	//faltan casos base
 
 	public boolean algunaColumnaSumaMasQueLaFila(int [][] mat, int nfila) {
 		boolean exiteAlgunaColMayorAFila = false;
+		
+		if(mat.length == 0 || nfila < 0 || nfila >= mat.length || mat.length == 0) {
+			return false;
+		}
+		
 		for(int col = 0; col < mat[0].length; col++) {
 			exiteAlgunaColMayorAFila = exiteAlgunaColMayorAFila || colMayor(mat, col, nfila);
 		}
@@ -227,10 +231,54 @@ public class AcumuladoresBooleanos {
 		for(int fila = 0; fila < mat.length; fila++) {
 			sumaCol+=mat[fila][ncol];
 		}
-		for(int col = 0; col < mat.length; col++ ) {
+		for(int col = 0; col < mat[nfila].length; col++ ) {
 			sumaFila+=mat[nfila][col];
 		}
 		return sumaCol > sumaFila;
+	}
+	//ejercicio 1
+	public boolean todosMultiplosEnAlgunaColumna(int[][] mat, int num) {
+		boolean algunaColMultiplo = false;
+		
+		if(mat.length == 0 || num <= 0) {
+			return false;
+		}
+		for(int i = 0; i < mat[0].length; i++) {
+			algunaColMultiplo = algunaColMultiplo || todosMultiplos(mat, num, i);
+		}
+		return algunaColMultiplo;
+	}
+	public boolean todosMultiplos(int [][] mat, int num, int col) {
+		boolean sonTodosMultiplos = true;
+		for(int i = 0; i < mat.length; i++) {
+			sonTodosMultiplos = sonTodosMultiplos && mat[i][col] % num == 0;
+		}
+		return sonTodosMultiplos;
+	}
+	//ejercicio 4
+	public boolean hayInterseccionPorColumna(int[][] mat1, int[][] mat2) {
+		boolean existeIterEnCol = false;
+		boolean existeInterEnTodasCol = true;
+		
+		if(mat1[0].length != mat2[0].length) {
+			return false;
+		}
+		
+		for(int col = 0; col < mat1[0].length; col++) {
+			for(int fila = 0; fila < mat1.length; fila++) {
+				existeIterEnCol = existeIterEnCol || buscarElementoEnCol(mat2, col, mat1[fila][col]);
+			}
+			existeInterEnTodasCol = existeInterEnTodasCol && existeIterEnCol;
+			existeIterEnCol = false;
+		}
+		return existeInterEnTodasCol;
+	}
+	public boolean buscarElementoEnCol(int [][] mat, int coll, int elemento) {
+		boolean existeElementoEnCol = false;
+		for(int fila = 0; fila < mat.length; fila++ ) {
+			existeElementoEnCol = existeElementoEnCol || mat[fila][coll] == elemento;
+		}
+		return existeElementoEnCol;
 	}
 	
 	
