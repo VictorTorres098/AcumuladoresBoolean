@@ -1,6 +1,7 @@
-package booleanAcum;
+package acumuladores;
 
-public class AcumuladoresBooleanos {
+public class Acumuladores {
+	
 	/*
 	Consigna Tarea 1:
 	Resolver con Acumuladores Booleanos
@@ -232,9 +233,13 @@ public class AcumuladoresBooleanos {
 		}
 		return sumaCol > sumaFila;
 	}
-	
-	
-	
-	
-	
+	public boolean todosMultiplosEnAlgunaColumna(int[][] mat, int numExisteColDeMultiplos) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public boolean hayInterseccionPorColumna(int[][] mat, int[][] matSinInterseccionPorColumna) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
