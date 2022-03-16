@@ -260,7 +260,7 @@ public class AcumuladoresBooleanos {
 		boolean existeIterEnCol = false;
 		boolean existeInterEnTodasCol = true;
 		
-		if(mat1[0].length != mat2[0].length) {
+		if((mat1[0].length != mat2[0].length) || mat1.length == 0 || mat2.length == 0 ) {
 			return false;
 		}
 		
@@ -271,7 +271,7 @@ public class AcumuladoresBooleanos {
 			existeInterEnTodasCol = existeInterEnTodasCol && existeIterEnCol;
 			existeIterEnCol = false;
 		}
-		return existeInterEnTodasCol;
+		return existeInterEnTodasCol ;
 	}
 	public boolean buscarElementoEnCol(int [][] mat, int coll, int elemento) {
 		boolean existeElementoEnCol = false;
