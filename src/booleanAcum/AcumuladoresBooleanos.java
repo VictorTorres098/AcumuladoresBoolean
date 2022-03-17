@@ -187,7 +187,7 @@ public class AcumuladoresBooleanos {
 		boolean existeInterFila = false;
 		boolean InterEnTodasFilas = true;
 		
-		if(mat1.length != mat2.length) {
+		if(mat1.length == 0 || mat2.length == 0 || !(mat1.length == mat2.length)) {
 			return false;
 		}
 		
@@ -257,28 +257,27 @@ public class AcumuladoresBooleanos {
 	}
 	//ejercicio 4
 	public boolean hayInterseccionPorColumna(int[][] mat1, int[][] mat2) {
-		boolean existeIterEnCol = false;
-		boolean existeInterEnTodasCol = true;
-		
-		if((mat1[0].length != mat2[0].length) || mat1.length == 0 || mat2.length == 0 ) {
+		if(mat1.length == 0 || mat2.length == 0 || !(mat1[0].length == mat2[0].length)) {
 			return false;
 		}
-		
-		for(int col = 0; col < mat1[0].length; col++) {
+		boolean hayInterseccionEnTodasCol = true;
+		boolean existeAlgunElementoEnAmbas = false;
+		for(int col = 0 ; col < mat1[0].length; col++) {
 			for(int fila = 0; fila < mat1.length; fila++) {
-				existeIterEnCol = existeIterEnCol || buscarElementoEnCol(mat2, col, mat1[fila][col]);
+				existeAlgunElementoEnAmbas = existeAlgunElementoEnAmbas || existeElementoEnCol(mat2, col, mat1[fila][col]);
 			}
-			existeInterEnTodasCol = existeInterEnTodasCol && existeIterEnCol;
-			existeIterEnCol = false;
+			hayInterseccionEnTodasCol = hayInterseccionEnTodasCol && existeAlgunElementoEnAmbas;
+			existeAlgunElementoEnAmbas = false;
 		}
-		return existeInterEnTodasCol ;
+		return hayInterseccionEnTodasCol;
 	}
-	public boolean buscarElementoEnCol(int [][] mat, int coll, int elemento) {
-		boolean existeElementoEnCol = false;
-		for(int fila = 0; fila < mat.length; fila++ ) {
-			existeElementoEnCol = existeElementoEnCol || mat[fila][coll] == elemento;
+	
+	public boolean existeElementoEnCol(int[][] matriz, int columna, int elemento) {
+		boolean existeAlgunIgual = false;
+		for(int f = 0; f < matriz.length; f++) {
+			existeAlgunIgual = existeAlgunIgual || matriz[f][columna] == elemento;
 		}
-		return existeElementoEnCol;
+		return existeAlgunIgual;
 	}
 	
 	

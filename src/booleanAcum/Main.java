@@ -38,9 +38,45 @@ public class Main {
 		int[][] matb4 = {{1,2,3},{3,4,5},{6,7,8}};
 		
 		//usar objetos jeje o cambiar los metodos a static para probar con mas facilidad
-		System.out.print(algunaColumnaSumaMasQueLaFila(matSuma,1));
+		//System.out.print(algunaColumnaSumaMasQueLaFila(matSuma,1));
+//		System.out.println(hayInterseccionPorFila(mat1,mat2));
+//		System.out.println(hayInterseccionPorFila(mat1,matb3));
+		System.out.println(hayInterseccionPorFila(mat1,mat4));
+		System.out.println(hayInterseccionPorColumna(matb1,matb4));
+		System.out.println(!(matb1[0].length == matb4[0].length) );
+//		System.out.println(!(mat1.length == mat4.length));
+//		System.out.println(mat.length==0);
+//		//System.out.println(hayInterseccionPorColumna(matb1,mat));
+//		System.out.println(hayInterseccionPorFila(mat1,mat4));
+		
+		
 		
 	}
+	static public boolean hayInterseccionPorFila(int[][] mat1, int [][] mat2) {
+		if(mat1.length == 0 || mat2.length == 0 || !(mat1.length == mat2.length)) {
+			return false;
+		}
+		boolean existeInterFila = false;
+		boolean InterEnTodasFilas = true;
+		
+		for(int fila = 0; fila < mat1.length; fila ++) { 
+			for(int col = 0; col < mat1[fila].length; col++) {
+				existeInterFila = existeInterFila || buscarElemento(mat2, fila, mat1[fila][col]);	
+			}
+			InterEnTodasFilas = InterEnTodasFilas && existeInterFila; 
+			existeInterFila = false; 
+		}
+		return InterEnTodasFilas ;
+	}
+	static public boolean buscarElemento(int [][] mat2, int fila, int elemento) {
+		boolean exiteElemento = false;
+		for(int col = 0; col < mat2[0].length; col++) {
+			exiteElemento = exiteElemento || mat2[fila][col] == elemento;
+		}
+		return exiteElemento;
+	}
+	
+	
 	static public boolean algunaColumnaSumaMasQueLaFila(int [][] mat, int nfila) {
 		boolean exiteAlgunaColMayorAFila = false;
 		
@@ -65,7 +101,36 @@ public class Main {
 		}
 		return sumaCol > sumaFila;
 	}
+	
+//	Que dado 2 matrices se verifica si hay intersección entre las Columnas de cada matriz, columna a
+//	columna.
+//	Si las matrices tienen distinta cantidad de columnas o alguna matriz está vacía, devuelve falso.
 
+	static public boolean hayInterseccionPorColumna(int[][] mat1, int[][] mat2) {
+		if(mat1.length == 0 || mat2.length == 0 || !(mat1[0].length == mat2[0].length) ) {
+			return false;
+		}
+		boolean hayInterseccionEnTodasCol = true;
+		boolean existeAlgunElementoEnAmbas = false;
+		for(int col = 0 ; col < mat1[0].length; col++) {
+			for(int fila = 0; fila < mat1.length; fila++) {
+				existeAlgunElementoEnAmbas = existeAlgunElementoEnAmbas || existeElementoEnCol(mat2, col, mat1[fila][col]);
+			}
+			hayInterseccionEnTodasCol = hayInterseccionEnTodasCol && existeAlgunElementoEnAmbas;
+			existeAlgunElementoEnAmbas = false;
+		}
+		return hayInterseccionEnTodasCol;
+	}
+	
+	static public boolean existeElementoEnCol(int[][] matriz, int columna, int elemento) {
+		boolean existeAlgunIgual = false;
+		System.out.println("Elemento a buscar: "+elemento);
+		for(int f = 0; f < matriz.length; f++) {
+			existeAlgunIgual = existeAlgunIgual || matriz[f][columna] == elemento;
+			System.out.println("Elementos: "+matriz[f][columna]);
+		}
+		return existeAlgunIgual;
+	}
 
 
 
