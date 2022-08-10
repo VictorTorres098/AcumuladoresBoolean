@@ -5,7 +5,9 @@ public class Main {
 	public static void main(String[] args) {
 		int [][] matriz = {{1,2,3},{4,5,6},{7,8,9,10}};
 		//recorrerFila(matriz);
-		int [][] matrizEjer3 = {{2,4,3},{5,8,9},{6,2,12}};
+		int [][] matrizEjer3 = {{2,4,3},
+								{5,8,9},
+								{6,2,12}};
 		
 		//matriz prueba ejer 4:
 		int [][] mat1 = {{1,2,3,4},
@@ -23,6 +25,7 @@ public class Main {
 		int [][] mat4 = {{1,2,3},
 				  		 {3,4,5},
 				  		 {6,7,8}};
+		int [][] matVacia = {};
 		
 		System.out.println();
 		
@@ -36,12 +39,13 @@ public class Main {
 		//ejer 4
 		
 		//true
-		/*
-		 * System.out.println(Acumuladores.hayInterseccionPorColumna(mat1, mat2));
-		 * //false System.out.println(Acumuladores.hayInterseccionPorColumna(mat1,
-		 * mat3)); //false
-		 * System.out.println(Acumuladores.hayInterseccionPorColumna(mat1, mat4));
-		 */
+		
+		  //System.out.println(Acumuladores.hayInterseccionPorColumna(matVacia, mat2));
+		  //false 
+		  //System.out.println(Acumuladores.hayInterseccionPorColumna(mat1,mat3)); 
+		  //false
+		  //System.out.println(Acumuladores.hayInterseccionPorColumna(mat1, mat4));
+		 
 		
 	}
 	public static void recorrerFila(int [][] mat) {

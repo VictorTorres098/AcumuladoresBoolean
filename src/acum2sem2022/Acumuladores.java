@@ -59,19 +59,20 @@ public class Acumuladores {
 	 * elementossea mayor estricto que la suma de todos los elementos de la columna indicada por parametro
 	 * Si el indice de la columna es invalido o la matriz esta vacia, devuelve falso.
 	 */
-	public boolean algunaFilaSumaMasQueLaColumna(int [][] mat, int nColum) {
+	public  boolean algunaFilaSumaMasQueLaColumna(int [][] mat, int nColum) {
 		if(mat.length == 0 || mat.length < nColum || nColum < 0)
 			return false;
+		
 		boolean algunaFila = false;
 		for(int fila = 0; fila < mat.length; fila++) {
 			algunaFila = algunaFila || esMayor(mat, nColum, fila);
 		}
 		return algunaFila;
 	}
-	public boolean esMayor(int[][]mat, int ncolum, int fila) {
+	public  boolean esMayor(int[][]mat, int ncolum, int fila) {
 		int sumaFila = 0;
 		int sumaCol = 0;
-		for(int i = 0; i < mat[ncolum].length; i++) {
+		for(int i = 0; i < mat.length; i++) {
 			sumaCol += mat[i][ncolum];
 		}
 		for(int j = 0; j < mat[0].length; j++) {
@@ -84,9 +85,10 @@ public class Acumuladores {
 	 * si las matrices tienen distinta cantidad de columnas o algun matriz esta vacia, devuelve falso.
 	 */
 	
-	public boolean hayInterseccionPorColumna(int[][] mat1, int[][] mat2) {
-		if(mat1[0].length != mat2[0].length || mat1.length == 0 || mat2.length == 0)
+	public  boolean hayInterseccionPorColumna(int[][] mat1, int[][] mat2) {
+		if( mat1.length==0 || mat2.length==0 || !(mat1[0].length == mat2[0].length))
 			return false;
+		
 		boolean todasColumInterseccion = true;
 		boolean algunElemInterseccion = false;
 		for(int col = 0; col < mat1[0].length; col++) {
@@ -99,7 +101,7 @@ public class Acumuladores {
 		
 		return todasColumInterseccion;
 	}
-	public boolean esInterseccionCol(int elem, int col, int [][] mat) {
+	public  boolean esInterseccionCol(int elem, int col, int [][] mat) {
 		boolean existeAlgunElementoEnCol = false;
 		for(int f = 0; f < mat.length; f++) {
 			existeAlgunElementoEnCol = existeAlgunElementoEnCol || elem == mat[f][col];
